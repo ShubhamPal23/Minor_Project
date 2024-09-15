@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b1b1b;
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links > * {
+  margin: 0 20px;
+  font-size: 23px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-links Link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links Link:hover {
+  color: #ff6600;
+}
+
+.user-auth .login-btn,
+.user-auth .signup-btn {
+  background-color: transparent;
+  border: 2px solid #ff6600;
+  color: #ff6600;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-auth .login-btn:hover,
+.user-auth .signup-btn:hover {
+  background-color: #ff6600;
+  color: #fff;
+}
+
+.user-auth .signup-btn {
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+}
+
+.user-auth .signup-btn:hover {
+  background-color: #ff4500;
+}

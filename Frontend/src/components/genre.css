@@ -1,0 +1,61 @@
+.Genre {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Add a subtle border radius */
+  }
+  
+  .Genre h2 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px; /* Add some space between the title and the list */
+  }
+  
+  .Genre ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the list items */
+  }
+  
+  .Genre li {
+    margin: 10px;
+    flex-basis: 20%; /* Make each list item take up 20% of the width */
+  }
+  
+  .Genre input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .Genre label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .Genre button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .Genre button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .Genre button[type="submit"]:active {
+    background-color: #3e8e41;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
