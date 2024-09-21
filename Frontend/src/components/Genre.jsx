@@ -37,25 +37,33 @@ const Genre = () => {
     console.log("Selected genres:", selectedGenres);
   };
 
-  return (
-    <div>
-      <h2>Select your favorite genres:</h2>
-      <ul>
-        {genres.map((genre) => (
-          <li key={genre.id}>
-            <input
-              type="checkbox"
-              id={genre.id}
-              value={genre.name}
-              onChange={(e) => handleGenreChange(e, genre)}
-            />
-            <label htmlFor={genre.id}>{genre.name}</label>
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
+return (
+    <div className='genre'>
+      <h2>Select your favorite Genres</h2>
+
+<div className="container text-center">
+  <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+    {genres.map((genre) => (
+      <div className="col" key={genre.id}>
+        <div className="p-3">
+          <div className="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+             <input type="checkbox" className="btn-check" id={genre.id} value={genre.name} onChange={(e) => handleGenreChange(e, genre)} />
+             <label className="button" htmlFor={genre.id}>{genre.name}</label>
+          </div>
+       </div>
+      </div>
+    ))}
+    
+  </div>
+</div>
+
+
+<div className="d-grid gap-2 col-6 mx-auto  p-5">
+  <button className="btn btn-primary" type="button" onClick={handleSubmit}>Filter</button>
+</div>
+  
+  </div> 
   );
-};
 
 export default Genre;
