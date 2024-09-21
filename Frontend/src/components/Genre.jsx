@@ -65,5 +65,6 @@ return (
   
   </div> 
   );
+}
 
 export default Genre;
