@@ -1,61 +1,75 @@
-.Genre {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px; /* Add a subtle border radius */
-  }
-  
-  .Genre h2 {
-    margin-top: 0;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px; /* Add some space between the title and the list */
-  }
-  
-  .Genre ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the list items */
-  }
-  
-  .Genre li {
-    margin: 10px;
-    flex-basis: 20%; /* Make each list item take up 20% of the width */
-  }
-  
-  .Genre input[type="checkbox"] {
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  
-  .Genre label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #666;
-    cursor: pointer;
-  }
-  
-  .Genre button[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .Genre button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  .Genre button[type="submit"]:active {
-    background-color: #3e8e41;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
+body {
+  background-color: #121212; /* Dark background for the entire page */
+  color: #e0e0e0; /* Light text color for readability */
+  font-family: 'Arial', sans-serif; /* Font style */
+}
+
+/* Genre container styles */
+.genre {
+  padding: 20px; /* Padding around the genre section */
+}
+
+/* Header styles */
+.genre h2 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: #ffffff; /* White color for the heading */
+}
+
+/* Container styles for checkboxes */
+.container {
+  margin-top: 20px; /* Space above the container */
+}
+
+/* Column styles for checkboxes */
+.col {
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+}
+
+/* Button group styles */
+.btn-group {
+  position: relative;
+}
+
+/* Checkbox styles */
+.btn-check {
+  display: none; /* Hide default checkbox appearance */
+}
+
+.button {
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #7f8081; /* Border color for buttons */
+  color: #cecfd1; /* Text color for buttons */
+  background-color: transparent; /* Transparent background by default */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  width: 100%; /* Make buttons full width of their container */
+  height: 50px; /* Set a fixed height for consistency */
+
+}
+
+/* Button hover effects */
+.button:hover {
+  background-color: rgba(174, 175, 177, 0.1); /* Light grey background on hover */
+}
+
+/* Active button styles when checkbox is checked */
+.btn-check:checked + .button {
+  background-color: #ff6600; /* Orange background when checked */
+  color: white; /* White text when checked */
+}
+
+/* Grid button styles for filter button */
+.d-grid .btn {
+  background-color: #121212; /* Primary button background color */
+}
+
+.d-grid .btn:hover {
+  background-color: #ff6600; /* Light orange on hover for the button */
+}
+
+.d-grid .btn-primary {
+  border-color: #ff6600; /* Border color for primary button on hover */
+}
