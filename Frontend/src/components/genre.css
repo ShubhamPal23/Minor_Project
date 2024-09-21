@@ -1,75 +1,68 @@
 body {
-  background-color: #121212; /* Dark background for the entire page */
-  color: #e0e0e0; /* Light text color for readability */
-  font-family: 'Arial', sans-serif; /* Font style */
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Arial", sans-serif;
 }
 
-/* Genre container styles */
 .genre {
-  padding: 20px; /* Padding around the genre section */
+  padding: 20px;
 }
 
-/* Header styles */
 .genre h2 {
-  text-align: center; /* Center the heading */
-  margin-bottom: 20px; /* Space below the heading */
-  color: #ffffff; /* White color for the heading */
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
-/* Container styles for checkboxes */
 .container {
-  margin-top: 20px; /* Space above the container */
+  margin-top: 20px;
 }
 
-/* Column styles for checkboxes */
 .col {
-  display: flex; /* Flexbox for alignment */
-  justify-content: center; /* Center content horizontally */
+  display: flex;
+  justify-content: center;
 }
 
-/* Button group styles */
 .btn-group {
   position: relative;
 }
 
-/* Checkbox styles */
 .btn-check {
-  display: none; /* Hide default checkbox appearance */
+  display: none;
 }
 
 .button {
   display: inline-flex;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #7f8081; /* Border color for buttons */
-  color: #cecfd1; /* Text color for buttons */
-  background-color: transparent; /* Transparent background by default */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-  width: 100%; /* Make buttons full width of their container */
-  height: 50px; /* Set a fixed height for consistency */
-
+  border: 1px solid #7f8081;
+  color: #cecfd1;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+  min-width: 130px;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Button hover effects */
 .button:hover {
-  background-color: rgba(174, 175, 177, 0.1); /* Light grey background on hover */
+  background-color: rgba(174, 175, 177, 0.1);
 }
 
-/* Active button styles when checkbox is checked */
 .btn-check:checked + .button {
-  background-color: #ff6600; /* Orange background when checked */
-  color: white; /* White text when checked */
+  background-color: #ff6600;
+  color: white;
 }
 
-/* Grid button styles for filter button */
 .d-grid .btn {
-  background-color: #121212; /* Primary button background color */
+  background-color: #121212;
 }
 
 .d-grid .btn:hover {
-  background-color: #ff6600; /* Light orange on hover for the button */
+  background-color: #ff6600;
 }
 
 .d-grid .btn-primary {
-  border-color: #ff6600; /* Border color for primary button on hover */
+  border-color: #ff6600;
 }
