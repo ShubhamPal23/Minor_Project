@@ -36,17 +36,15 @@ body {
   color: white;
 }
 
-.nav-links Link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease-in-out;
+.liinks:hover{
+    color: #ff6600;
+    transition: all 0.3s ease-in-out;
+    scale: calc(1.04);
 }
-
-.nav-links Link:hover {
-  color: #ff6600;
+.nav-links a.active{
+    color: orange;
+    scale: calc(1.04);
 }
-
 .user-auth .login-btn,
 .user-auth .signup-btn {
   background-color: transparent;
