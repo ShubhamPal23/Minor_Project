@@ -1,4 +1,4 @@
-import { json, Link } from 'react-router-dom';
+import { json, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -43,10 +43,10 @@ const Navbar = () => {
       </div>
       <button onClick={handlegenre}>Select Your Favourite Genre</button>
       <ul className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/trending">Trending</Link>
-        <Link to="/recommendation">Recommendation</Link>
-        <Link to="/about">About Us</Link>
+        <NavLink className="liinks" to="/">Home</NavLink>
+        {/* <Link to="/trending">Trending</Link> */}
+        <NavLink className="liinks" to="/recommendation">Recommendation</NavLink>
+        <NavLink className="liinks" to="/about">About Us</NavLink>
       </ul>
       <div className="user-auth">
         {user ? (
