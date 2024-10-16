@@ -44,7 +44,7 @@ const Navbar = () => {
       <button onClick={handlegenre}>Select Your Favourite Genre</button>
       <ul className="nav-links">
         <NavLink className="liinks" to="/">Home</NavLink>
-        {/* <Link to="/trending">Trending</Link> */}
+        <NavLink to="/trending">Trending</NavLink>
         <NavLink className="liinks" to="/recommendation">Recommendation</NavLink>
         <NavLink className="liinks" to="/about">About Us</NavLink>
       </ul>
