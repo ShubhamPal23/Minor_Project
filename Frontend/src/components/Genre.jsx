@@ -32,8 +32,6 @@ const Genre = () => {
     {
         navigate('/')
     }
-
-    // Submit the selected genres to your backend or perform any other desired action
     console.log("Selected genres:", selectedGenres);
   };
 
