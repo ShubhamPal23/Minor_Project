@@ -9,9 +9,10 @@ const MovieCard = ({ title, imageUrl, rating, genres }) => {
       </div>
       <div className="movie-card-content">
         <h3 className="movie-card-title">{title}</h3>
-        <p className="movie-card-rating">Rating: {rating}</p>
+        <p className="movie-card-rating"><strong>Rating: </strong> {rating}</p>
         <p className="movie-card-genres">
-          Genres:{" "}
+          <strong>Genres</strong>
+          <br />
           {genres.map((genre, index) => (
             <span key={index}>{genre}</span>
           ))}
