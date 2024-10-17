@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import MovieCard from './MovieCard';
-import './Home.css'; 
+import React, { useEffect, useState } from "react";
+import MovieCard from "./MovieCard";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
+import { useLocation } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
-const API_KEY = 'e6a8a833176f610ddab69b3aec7b47c7'; 
-const MOVIE_API_URL = (page) => `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`;
-const TOTAL_PAGES = 6; 
+const API_KEY = "e6a8a833176f610ddab69b3aec7b47c7";
+const CURRENT_YEAR = new Date().getFullYear();
+const LAST_20_YEARS = CURRENT_YEAR - 30;
+
+const MOVIE_API_URL = (page, genreIds) => {
+  if (genreIds.length > 0) {
+    return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&with_genres=${genreIds.join(
+      ","
+    )}&include_adult=false&release_date.gte=${LAST_20_YEARS}-01-01`;
+  }
+  return `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`;
+};
 
 const Home = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [genres, setGenres] = useState({});
+  const selectedGenres = location.state?.selectedGenres || [];
 
   useEffect(() => {
-  
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    )
       .then((response) => response.json())
       .then((data) => {
         const genreMap = data.genres.reduce((acc, genre) => {
@@ -23,33 +39,54 @@ const Home = () => {
         }, {});
         setGenres(genreMap);
       })
-      .catch((error) => console.error('Error fetching genre data:', error));
+      .catch((error) => console.error("Error fetching genre data:", error));
 
     fetchMovies(currentPage);
-  }, [currentPage]);
+  }, [currentPage, selectedGenres]);
 
   const fetchMovies = (page) => {
-    fetch(MOVIE_API_URL(page))
+    fetch(MOVIE_API_URL(page, selectedGenres))
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data.results);
+        const filteredMovies = data.results.filter(
+          (movie) => !movie.adult && movie.poster_path
+        );
+
+        const sortedMovies = filteredMovies.sort(
+          (a, b) => b.vote_average - a.vote_average
+        );
+
+        setMovies(sortedMovies);
         setTotalPages(data.total_pages);
+        console.log(data.total_pages);
       })
-      .catch((error) => console.error('Error fetching movie data:', error));
+      .catch((error) => console.error("Error fetching movie data:", error));
   };
 
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
+  const handlePageChange = (data) => {
+    const selectedPage = data.selected + 1;
+    setCurrentPage(selectedPage);
+  };
+  const handlegenre = () => {
+    navigate("/genre");
   };
 
   return (
     <div className="home">
-      <h1 style={{textAlign:"center" ,marginBottom:"20px"}}>Top Rated Movies</h1>
+      <div className="content">
+        <button onClick={handlegenre} className="genre-btn">
+          Select Your Favourite Genre
+        </button>
+        <h1>
+          Top Rated Movies
+        </h1>
+      </div>
+
       <div className="movie-grid">
         {movies.map((movie) => {
-          const movieGenres = movie.genre_ids.map(id => genres[id] || 'Unknown');
+          const movieGenres = movie.genre_ids.map(
+            (id) => genres[id] || "Unknown"
+          );
           return (
             <MovieCard
               key={movie.id}
@@ -61,23 +98,19 @@ const Home = () => {
           );
         })}
       </div>
-      <div className="pagination">
-        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-          Previous
-        </button>
-        {[...Array(TOTAL_PAGES)].map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={totalPages}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName={"pagination"}
+        activeClassName={"active"}
+      />
     </div>
   );
 };
