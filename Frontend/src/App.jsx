@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,6 +8,7 @@ import Home from "./components/Home";
 import Recommendation from "./components/Recommendation";
 import Genre from "./components/Genre";
 import Trending from "./components/Trending";
+import Search from "./components/Search";
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
           <Route path="/recommendation" element={<Recommendation/>}></Route>
           <Route path="/genre" element={<Genre/>}></Route>
           <Route path="/trending" element={<Trending/>}></Route>
+          <Route path="/search" element={<Search/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
