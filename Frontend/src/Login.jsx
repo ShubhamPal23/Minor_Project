@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState();
@@ -10,7 +11,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post("http://localhost:5500/login", { email, password })
       .then((result) => {
         if (result.data.status === "Success") {
           // Save user info to localStorage
@@ -25,42 +26,38 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white p-3 rounded w-25">
-        <h2>Login</h2>
+    <div className="container">
+    <div className="form-card">
+        <h2 className="form-title">Login</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Email</strong>
-            </label>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              autoComplete="off"
-              name="email"
-              className="form-control rounded-0"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Password</strong>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              autoComplete="off"
-              name="password"
-              className="form-control rounded-0"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="btn btn-success w-100 rounded-0">
-            Login
-          </button>
+            <div className="form-group">
+                <label htmlFor="email" className="form-label">Email</label>
+                <input
+                    type="email"
+                    placeholder="Enter Email"
+                    autoComplete="off"
+                    name="email"
+                    className="form-control"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="password" className="form-label">Password</label>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    autoComplete="off"
+                    name="password"
+                    className="form-control"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </div>
+            <button type="submit" className="btn">Login</button>
         </form>
-      </div>
     </div>
+</div>
   );
 }
 
